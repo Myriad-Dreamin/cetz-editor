@@ -6,6 +6,30 @@ This is a sample project to exhibit how to develop along with/without a local bu
 > automatically identify your project. We recommend you to use [git](https://git-scm.com/), [Yarn](https://yarnpkg.com/), and
 > [turbo](https://turbo.build/) to manage your projects.
 
+### Debug the cetz editor
+
+Run the vite dev server to get hot-reloading functionality:
+
+```bash
+# start a vite dev server
+$ yarn run dev
+# open the browser
+$ open http://localhost:5173
+```
+
+### Build the cetz editor
+
+The cetz editor is bundled into a single html file, so you can open it directly in the browser:
+
+```bash
+# start a vite dev server
+$ yarn run build
+# open the browser
+$ open out/index.html
+```
+
+### Setup the wasm modules
+
 There are three ways to run the sample project (Also see the [`src/index.mts`](./src/index.mts) file).
 
 1. Use the wasm modules from CDN (default):
@@ -70,7 +94,7 @@ Or this:
 panicked at `called Result::unwrap()` on an `Err` value: CheckBytesError(...)
 ```
 
-### Setup the wasm modules in local
+### Build and provide the wasm modules in local
 
 Build the typst.ts project and start a local server:
 
@@ -85,17 +109,8 @@ $ cargo run --bin typst-ts-dev-server -- compile --compiler debug corpus --cat s
 $ cargo run --bin typst-ts-dev-server -- run http --corpus ./fuzzers/corpora/
 ```
 
-### Debug the cetz editor
-
-```bash
-# start a vite dev server
-$ yarn run dev
-# open the browser
-$ open http://localhost:5173
-```
-
 ### Caution
 
-This is a quick and dirty project, so you may face some problems when you try to run it. Please feel free to open an issue if you have any questions.
+This is a quick and dirty project, so you may face some problems when you try to run it. Please feel free to open an [issue](https://github.com/Myriad-Dreamin/typst.ts/issues) or a [discussion](https://github.com/Myriad-Dreamin/typst.ts/discussions) if you have any questions.
 
-Also feel free to open a PR to help us improve this sample project.
+Also feel free to open a [issue](https://github.com/Myriad-Dreamin/cetz-editor/pulls) to help us improve this sample project.
