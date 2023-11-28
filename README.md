@@ -22,7 +22,7 @@ $ open http://localhost:5173
 The cetz editor is bundled into a single html file, so you can open it directly in the browser:
 
 ```bash
-# start a vite dev server
+# bundle files
 $ yarn run build
 # open the browser
 $ open out/index.html
