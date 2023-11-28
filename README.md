@@ -6,13 +6,20 @@ This is a sample project to exhibit how to develop along with/without a local bu
 > automatically identify your project. We recommend you to use [git](https://git-scm.com/), [Yarn](https://yarnpkg.com/), and
 > [turbo](https://turbo.build/) to manage your projects.
 
-There are three ways to import the wasm modules in the sample project (See the [`src/index.mts`](./src/index.mts) file):
+There are three ways to run the sample project (Also see the [`src/index.mts`](./src/index.mts) file).
 
 1. Use the wasm modules from CDN (default):
 
-```ts
-let moduleSource: ModuleSource = 'jsdelivr';
-```
+- ensure that the `projects/cetz-editor` is cloned individually (not in the source tree of `typst.ts`)
+  ```bash
+  git clone https://github.com/Myriad-Dreamin/cetz-editor.git
+  ```
+- ensure that you can connect to jsdelivr.net
+- change `window.$typst$moduleSource` manually in the [`src/index.mts`](./src/index.mts) file:
+
+  ```ts
+  let moduleSource: ModuleSource = 'jsdelivr';
+  ```
 
 2. Bundle the wasm modules via vite:
 
@@ -25,16 +32,21 @@ import renderer from '@myriaddreamin/typst-ts-renderer/pkg/typst_ts_renderer_bg.
 
 3. Serve the wasm modules locally via `typst-ts-dev-server` (See [Setup the typst.ts in local](#setup-the-typstts-in-local)):
 
-Please
-
+- ensure that the `projects/cetz-editor` is in the source tree of `typst.ts`.
+  ```bash
+  git clone https://github.com/Myriad-Dreamin/typst.ts.git
+  git submodule update --init --checkout projects/cetz-editor
+  ```
 - ensure that `cargo run --bin typst-ts-dev-server -- run http --corpus ./fuzzers/corpora/`
 - change `window.$typst$moduleSource` manually in the [`src/index.mts`](./src/index.mts) file:
 
-```ts
-window.$typst$moduleSource = 'local';
-```
+  ```ts
+  window.$typst$moduleSource = 'local';
+  ```
 
-Note that you should align the version of the wasm modules with the version of the typst.ts package:
+### Align the version of the wasm modules with the version of the typst.ts package
+
+Note that you should align the versions:
 
 ```json
 {
@@ -76,8 +88,6 @@ $ cargo run --bin typst-ts-dev-server -- run http --corpus ./fuzzers/corpora/
 ### Debug the cetz editor
 
 ```bash
-# watch and compile typescript
-$ npx tsc -w
 # start a vite dev server
 $ yarn run dev
 # open the browser
